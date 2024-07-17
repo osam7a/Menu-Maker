@@ -1,6 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.templatetags.static import static
+
+from .models import Menu, Category, Item
 
 # Create your views here.
 def menu(request, menu_id):
-    return render(request, 'menu.html')
+    menu = get_object_or_404(Menu, pk=menu_id)
+    categories = Category.objects.filter(menu=menu)
+    items = Item.objects.filter(menu=menu)
+
+    context = {
+        'menu': menu,
+        'categories': categories,
+        'items': items,
+    }
+    return render(request, menu.template + '/menu.html', context)
