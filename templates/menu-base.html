@@ -1,11 +1,12 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MenuMaker - Menu</title>
+    <title>{% translate menu.title %} - {{ menu.resturaunt_name }}</title>
 
     <!-- Tailwind, jquery -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,10 +15,12 @@
     <!-- DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- set favicon -->
+    <link rel="icon" href="{{ menu.logo.url }}" type="image/x-icon">
 </head>
 <body class="w-screen h-screen flex items-stretch justify-center">
-    <div class="p-2 max-w-2xl w-full flex flex-col items-center" data-theme="dark">
-        <img class="w-full max-w-60" src="{% static 'logo.png' %}" alt="MenuMaker Logo">
+    <div class="p-2 max-w-lg w-full {% block parent_classes %}{% endblock %}" data-theme="dark">
         {% block content %}{% endblock %}
     </div>
 </body>
