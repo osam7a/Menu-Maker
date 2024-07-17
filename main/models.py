@@ -6,10 +6,9 @@ class Menu(models.Model):
     logo = models.ImageField(upload_to='images/')
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
-    maps_link = models.CharField(max_length=100)
+    maps_link = models.CharField(blank=True, max_length=100)
 
     currency = models.CharField(max_length=10, default='EUR')
-    qr_code = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.title
