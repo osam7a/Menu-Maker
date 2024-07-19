@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+from json import load
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'modeltranslation',
 
     'main'
 ]
@@ -82,51 +86,15 @@ LOCALE_PATHS = (
 )
 
 USE_I18N = True
-LANGUAGES = (
-    ('en', _('English')),
-    ('de', _('German')),
-    ('fr', _('French')),
-    ('es', _('Spanish')),
-    ('it', _('Italian')),
-    ('pt', _('Portuguese')),
-    ('nl', _('Dutch')),
-    ('pl', _('Polish')),
-    ('ru', _('Russian')),
-    ('tr', _('Turkish')),
-    ('ja', _('Japanese')),
-    ('ko', _('Korean')),
-    ('zh', _('Chinese')),
-    ('ar', _('Arabic')),
-    ('hi', _('Hindi')),
-    ('bn', _('Bengali')),
-    ('pa', _('Punjabi')),
-    ('vi', _('Vietnamese')),
-    ('id', _('Indonesian')),
-    ('de', _('German')),
-    ('el', _('Greek')),
-    ('hu', _('Hungarian')),
-    ('cs', _('Czech')),
-    ('sk', _('Slovak')),
-    ('uk', _('Ukrainian')),
-    ('ro', _('Romanian')),
-    ('hr', _('Croatian')),
-    ('sr', _('Serbian')),
-    ('bg', _('Bulgarian')),
-    ('sl', _('Slovenian')),
-    ('lt', _('Lithuanian')),
-    ('lv', _('Latvian')),
-    ('et', _('Estonian')),
-    ('fi', _('Finnish')),
-    ('sv', _('Swedish')),
-    ('da', _('Danish')),
-    ('no', _('Norwegian')),
-    ('is', _('Icelandic')),
-    ('tr', _('Turkish')),
-    ('ar', _('Arabic')),
-    ('fa', _('Persian')),
-    ('ur', _('Urdu')),
-    ('th', _('Thai')),
-    ('lo', _('Lao')),
+LANGUAGES = [
+    (lang['fields']['code'], lang['fields']['name']) for lang in load(open(BASE_DIR / 'languages.json', encoding='utf-8'))
+]
+
+IS_MONOLINGUAL=False
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'main.translation',
 )
 
 # Database

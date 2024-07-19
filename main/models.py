@@ -11,9 +11,14 @@ class Menu(models.Model):
 
     currency = models.CharField(max_length=10, default='EUR')
     template = models.CharField(max_length=100, default='basic')
+    languages_allowed = models.ManyToManyField('Language')
 
     def __str__(self):
-        return self.title
+        return self.title_en + " | " + self.title_ar
+    
+    class Meta:
+        verbose_name = "Menu"
+        verbose_name_plural = "Menus"
 
 class Category(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
@@ -21,7 +26,11 @@ class Category(models.Model):
     title = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.title
+        return self.title_en + " | " + self.title_ar
+    
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 class Item(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
@@ -33,4 +42,19 @@ class Item(models.Model):
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return self.title
+        return self.title_en + " | " + self.title_ar
+    
+    class Meta:
+        verbose_name = "Item"
+        verbose_name_plural = "Items"
+
+class Language(models.Model):
+    code = models.CharField(max_length=2)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Language"
+        verbose_name_plural = "Languages"
