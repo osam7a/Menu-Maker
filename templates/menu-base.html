@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
     <!-- Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
@@ -20,7 +22,7 @@
     <link rel="icon" href="{{ menu.logo.url }}" type="image/x-icon">
 </head>
 <body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-screen h-screen flex items-stretch justify-center">
-    <div class="p-2 max-w-lg w-full {% block parent_classes %}{% endblock %}">
+    <div class="p-3 max-w-sm w-full {% block parent_classes %}{% endblock %}">
         {% block content %}{% endblock %}
     </div>
 </body>
