@@ -1,0 +1,50 @@
+[
+    {
+        "model": "main.language",
+        "pk": 1,
+        "fields": {
+            "code": "en",
+            "name": "English"
+        }
+    },
+    {
+        "model": "main.language",
+        "pk": 2,
+        "fields": {
+            "code": "de",
+            "name": "Deutsch"
+        }
+    },
+    {
+        "model": "main.language",
+        "pk": 3,
+        "fields": {
+            "code": "ar",
+            "name": "العربية"
+        }
+    },
+    {
+        "model": "main.language",
+        "pk": 4,
+        "fields": {
+            "code": "fr",
+            "name": "Français"
+        }
+    },
+    {
+        "model": "main.language",
+        "pk": 5,
+        "fields": {
+            "code": "es",
+            "name": "Español"
+        }
+    },
+    {
+        "model": "main.language",
+        "pk": 6,
+        "fields": {
+            "code": "ru",
+            "name": "русский"
+        }
+    }
+]
