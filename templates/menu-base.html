@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
@@ -19,7 +20,7 @@
     <!-- set favicon -->
     <link rel="icon" href="{{ menu.logo.url }}" type="image/x-icon">
 </head>
-<body class="w-screen h-screen flex items-stretch justify-center">
+<body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-screen h-screen flex items-stretch justify-center">
     <div class="p-2 max-w-lg w-full {% block parent_classes %}{% endblock %}" data-theme="dark">
         {% block content %}{% endblock %}
     </div>
