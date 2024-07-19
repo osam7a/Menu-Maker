@@ -14,4 +14,8 @@ def menu(request, menu_id):
         'categories': categories,
         'items': items,
     }
-    return render(request, menu.template + '/menu.html', context)
+
+    if not request.GET.get('selected'):
+        return render(request, menu.template + '/menu-selector.html', context)
+    else:
+        return render(request, menu.template + '/menu.html', context)
