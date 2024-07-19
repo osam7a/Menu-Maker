@@ -1,0 +1,44 @@
+{% extends 'menu-base.html' %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block parent_classes %}relative bg-neutral-800 text-white{% endblock %}
+{% block content %}
+<!-- language selector custom modal -->
+<div id="header" class="sticky top-0 flex flex-row justify-between items-center gap-1.5 mb-5">
+    <img class="h-16" src="{{ menu.logo.url }}" alt="{{ menu.resturaunt_name }} Logo">
+    <!-- Dropdown with images for languages -->
+    <a href="{{ request.path|slice:':-1' }}" class="rounded rounded-md p-3 transition-all duration-50 bg-neutral-700 active:bg-neutral-600">
+        <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z"/></svg>
+    </a>
+</div>
+<div class="p-3 mt-3 bg-neutral-900 rounded">
+    <div class="carousel carousel-center gap-3 scroll-smooth">
+        <div id="item-1" class="carousel-item grid grid-cols-3 max-[350px]:grid-cols-1 gap-2 w-full">
+            <div class="col-span-2 max-[350px]:col-span-1 w-full h-full flex flex-col justify-start">
+                <p class="badge badge-primary">Featured Dish</p>
+                <div class="text-2xl">Lamb Shawarma</div>
+                <p class="text-sm">A delicious lamb shawarma with a side of hummus and pita bread.</p>
+                <div class="mt-1 text-3xl font-medium">$356</div>
+            </div>
+            <!-- <img class="max-[350px]:order-first max-h-max justify-self-center" src="https://lazeezshawarma.com/wp-content/uploads/2021/01/Shawarma.png" alt="Featured Dish"> -->
+            <div class="max-[350px]:order-first w-full min-h-32 h-full" style="background-image: url('https://blog.thermoworks.com/wp-content/uploads/2023/04/29_Chicken-Shawarma_Thermapen-ONE_Smoke_TimeStick_305_compressed.jpg');background-size: cover;background-repeat: no-repeat;background-position: center;"></div>
+        </div>
+        <div id="item-2" class="carousel-item grid grid-cols-3 max-[350px]:grid-cols-1 gap-2 w-full">
+            <div class="col-span-2 max-[350px]:col-span-1 w-full h-full flex flex-col justify-start">
+                <p class="badge badge-secondary">Customer's Choice</p>
+                <div class="text-2xl">Chicken Shawarma</div>
+                <p class="text-sm">A delicious chicken shawarma with a side of hummus and pita bread.</p>
+                <div class="mt-1 text-3xl font-medium">$356</div>
+            </div>
+            <!-- <img class="max-[350px]:order-first max-h-max justify-self-center" src="https://lazeezshawarma.com/wp-content/uploads/2021/01/Shawarma.png" alt="Featured Dish"> -->
+            <div class="max-[350px]:order-first w-full min-h-32 h-full" style="background-image: url('https://blog.thermoworks.com/wp-content/uploads/2023/04/29_Chicken-Shawarma_Thermapen-ONE_Smoke_TimeStick_305_compressed.jpg');background-size: cover;background-repeat: no-repeat;background-position: center;"></div>
+        </div>
+    </div>
+    <div class="flex w-full justify-center gap-2 py-2">
+        <a href="#item-1" class="btn btn-xs">1</a>
+        <a href="#item-2" class="btn btn-xs">2</a>
+    </div>
+</div>
+{% endblock %}
