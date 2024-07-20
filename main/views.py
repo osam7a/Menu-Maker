@@ -13,6 +13,7 @@ def menu(request, menu_id):
         'menu': menu,
         'categories': categories,
         'items': items,
+        'featured': items.filter(featured=True),
     }
 
     if not request.GET.get('selected'):
