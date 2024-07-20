@@ -1,4 +1,12 @@
 from django.db import models
+from django.utils.translation import gettext as _
+
+LABEL_COLORS = [
+    ('red', _('Red')),
+    ('blue', _('Blue')),
+    ('green', _('Green')),
+    ('yellow', _('Yellow'))
+]
 
 # Create your models here.
 class Menu(models.Model):
@@ -26,7 +34,7 @@ class Category(models.Model):
     title = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.title_en + " | " + self.title_ar
+        return self.title + " | " + self.title_ar
     
     class Meta:
         verbose_name = "Category"
@@ -38,11 +46,15 @@ class Item(models.Model):
 
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    ingredients = models.TextField()
-    image = models.ImageField(upload_to='images/')
+    ingredients = models.TextField(blank=True)
+    image = models.ImageField(upload_to='static/uploads/')
+
+    featured = models.BooleanField(default=False)
+    featured_label = models.CharField(max_length=100, blank=True)
+    featured_label_color = models.CharField(max_length=100, blank=True, choices=LABEL_COLORS, default='red')
 
     def __str__(self):
-        return self.title_en + " | " + self.title_ar
+        return self.title + " | " + self.title_ar
     
     class Meta:
         verbose_name = "Item"
