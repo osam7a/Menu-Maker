@@ -32,6 +32,7 @@ class Category(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=100)
+    image = models.ImageField(blank=True, upload_to='static/uploads/')
 
     def __str__(self):
         return self.title + " | " + self.title_ar
