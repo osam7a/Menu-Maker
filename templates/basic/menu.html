@@ -31,8 +31,8 @@
     </div>
     <div class="swiper-pagination"></div>
 </div>
-<h1 class="mt-5 mb-2 text-2xl">{% translate 'Categories' %}</h1>
-<hr class="mb-3 opacity-50">
+<h1 class="mt-5 mb-2 text-3xl">{% translate 'Categories' %}</h1>
+<hr class="mb-3 opacity-50 w-2/5">
 <div class="flex flex-col gap-1.5">
     {% for category in categories %}
     <div class="grid grid-rows-1 grid-cols-7 bg-neutral-700 rounded rounded-md animate__animated animate__slideInLeft" style="animation-delay: .{{ forloop.counter0|add:3 }}s;animation-duration: .5s;">
