@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-19 09:44+0400\n"
+"POT-Creation-Date: 2024-07-23 09:16+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\basic\menu-selector.html:9
-msgid "Select a language"
-msgstr "Wähle eine Sprache"
+#: .\main\models.py:5
+msgid "Red"
+msgstr "Rot"
+
+#: .\main\models.py:6
+msgid "Blue"
+msgstr "Blau"
+
+#: .\main\models.py:7
+msgid "Green"
+msgstr "Grün"
+
+#: .\main\models.py:8
+msgid "Yellow"
+msgstr "Gelb"
+
+#: .\templates\basic\menu.html:34
+msgid "Categories"
+msgstr "Kategorien"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"

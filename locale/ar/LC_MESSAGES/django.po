@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-19 09:44+0400\n"
+"POT-Creation-Date: 2024-07-23 09:16+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\templates\basic\menu-selector.html:9
-msgid "Select a language"
-msgstr "اختر اللغة"
+#: .\main\models.py:5
+msgid "Red"
+msgstr "أحمر"
+
+#: .\main\models.py:6
+msgid "Blue"
+msgstr "أزرق"
+
+#: .\main\models.py:7
+msgid "Green"
+msgstr "أخضر"
+
+#: .\main\models.py:8
+msgid "Yellow"
+msgstr "أصفر"
+
+#: .\templates\basic\menu.html:34
+msgid "Categories"
+msgstr "فئات"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
 msgid "Messages"
@@ -77,15 +93,17 @@ msgstr "أدخل عنوان بريد إلكتروني صالح."
 #: .\venv\Lib\site-packages\django\core\validators.py:259
 msgid ""
 "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr "أدخل \"slug\" صالحًا يتكون من أحرف أو أرقام أو شرطات سفلية أو علامات وصل."
+msgstr ""
+"أدخل \"رمزًا ثابتًا\" صالحًا يتكون من أحرف أو أرقام أو شرطات سفلية أو "
+"واصلات."
 
 #: .\venv\Lib\site-packages\django\core\validators.py:267
 msgid ""
 "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
 " hyphens."
 msgstr ""
-"أدخل \"رمزًا ثابتًا\" صالحًا يتكون من أحرف Unicode أو أرقام أو شرطات سفلية "
-"أو واصلات."
+"أدخل \"slug\" صالحًا يتكون من أحرف Unicode أو أرقام أو شرطات سفلية أو علامات"
+" وصل."
 
 #: .\venv\Lib\site-packages\django\core\validators.py:279
 #: .\venv\Lib\site-packages\django\core\validators.py:306
@@ -193,12 +211,12 @@ msgid ""
 "File extension “%(extension)s” is not allowed. Allowed extensions are: "
 "%(allowed_extensions)s."
 msgstr ""
-"لا يُسمح بامتداد الملف \"%(extension)s\". الامتدادات المسموح بها هي: "
+"ملحق الملف \"%(extension)s\" غير مسموح به. الامتدادات المسموح بها هي: "
 "%(allowed_extensions)s."
 
 #: .\venv\Lib\site-packages\django\core\validators.py:624
 msgid "Null characters are not allowed."
-msgstr "غير مسموح بالأحرف الفارغة."
+msgstr "لا يُسمح بالأحرف الفارغة."
 
 #: .\venv\Lib\site-packages\django\db\models\base.py:1477
 #: .\venv\Lib\site-packages\django\forms\models.py:906
@@ -466,7 +484,7 @@ msgstr "كائن JSON"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\json.py:28
 msgid "Value must be valid JSON."
-msgstr "يجب أن تكون القيمة JSON صالحة."
+msgstr "يجب أن تكون القيمة صالحة بتنسيق JSON."
 
 #: .\venv\Lib\site-packages\django\db\models\fields\related.py:939
 #, python-format
@@ -479,7 +497,7 @@ msgstr "المفتاح الخارجي (النوع المحدد حسب الحقل
 
 #: .\venv\Lib\site-packages\django\db\models\fields\related.py:1235
 msgid "One-to-one relationship"
-msgstr "علاقة واحد لواحد"
+msgstr "علاقة فردية"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\related.py:1292
 #, python-format
@@ -556,7 +574,7 @@ msgstr[1] ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:638
 msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr "يرجى إما إرسال ملف أو تحديد مربع الاختيار \"مسح\"، وليس كليهما."
+msgstr "يرجى إما إرسال ملف أو تحديد خانة الاختيار الواضحة، وليس كليهما."
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:702
 msgid ""
@@ -640,7 +658,7 @@ msgstr "الرجاء تصحيح البيانات المكررة لـ %(field)s."
 #: .\venv\Lib\site-packages\django\forms\models.py:904
 #, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr "يرجى تصحيح البيانات المكررة لـ %(field)s، والتي يجب أن تكون فريدة."
+msgstr "الرجاء تصحيح البيانات المكررة لـ %(field)s، والتي يجب أن تكون فريدة."
 
 #: .\venv\Lib\site-packages\django\forms\models.py:911
 #, python-format
@@ -657,7 +675,7 @@ msgstr "الرجاء تصحيح القيم المكررة أدناه."
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1357
 msgid "The inline value did not match the parent instance."
-msgstr "لم تتطابق القيمة المضمنة مع المثيل الأصلي."
+msgstr "القيمة المضمنة لم تتطابق مع المثيل الرئيسي."
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1448
 msgid ""
@@ -675,8 +693,8 @@ msgid ""
 "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
 "may be ambiguous or it may not exist."
 msgstr ""
-"لا يمكن تفسير %(datetime)s في المنطقة الزمنية %(current_timezone)s؛ فقد يكون"
-" غامضًا أو قد لا يكون موجودًا."
+"لا يمكن تفسير %(datetime)s بالمنطقة الزمنية %(current_timezone)s؛ قد تكون "
+"غامضة أو قد لا تكون موجودة."
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:461
 msgid "Clear"
@@ -969,12 +987,12 @@ msgstr "أكتوبر"
 #: .\venv\Lib\site-packages\django\utils\dates.py:63
 msgctxt "abbrev. month"
 msgid "Nov."
-msgstr "نوفمبر."
+msgstr "نوفمبر"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:64
 msgctxt "abbrev. month"
 msgid "Dec."
-msgstr "ديسمبر"
+msgstr "ديسمبر."
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:67
 msgctxt "alt. month"
@@ -1134,10 +1152,11 @@ msgid ""
 "checking. If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
-"إذا كنت تستخدم علامة <meta name=\"referrer\" content=\"no-referrer\"> أو "
+"إذا كنت تستخدم العلامة <meta name=\"referrer\" content=\"no-referrer\"> أو "
 "تتضمن رأس \"Referrer-Policy: no-referrer\"، فيرجى إزالتها. تتطلب حماية CSRF "
-"رأس \"Referer\" للتحقق الصارم من المرجع. إذا كنت مهتمًا بالخصوصية، فاستخدم "
-"بدائل مثل <a rel=\"noreferrer\" …> للروابط إلى مواقع الطرف الثالث."
+"أن يقوم رأس \"المُحيل\" بإجراء فحص صارم للمُحيل. إذا كنت مهتمًا بالخصوصية، "
+"فاستخدم بدائل مثل <a rel=\"noreferrer\" …> للروابط إلى مواقع الجهات "
+"الخارجية."
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:54
 msgid ""
@@ -1145,8 +1164,8 @@ msgid ""
 "submitting forms. This cookie is required for security reasons, to ensure "
 "that your browser is not being hijacked by third parties."
 msgstr ""
-"أنت ترى هذه الرسالة لأن هذا الموقع يتطلب ملف تعريف ارتباط CSRF عند إرسال "
-"النماذج. هذا ملف تعريف الارتباط مطلوب لأسباب أمنية، لضمان عدم اختطاف متصفحك "
+"أنت ترى هذه الرسالة لأن هذا الموقع يتطلب ملف تعريف الارتباط CSRF عند إرسال "
+"النماذج. ملف تعريف الارتباط هذا مطلوب لأسباب أمنية، لضمان عدم اختراق متصفحك "
 "من قبل أطراف ثالثة."
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:60
@@ -1241,7 +1260,7 @@ msgstr "فهرس %(directory)s"
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
 msgid "The install worked successfully! Congratulations!"
-msgstr "تم التثبيت بنجاح! مبروك!"
+msgstr "تم التثبيت بنجاح! تهانينا!"
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
 #, python-format
@@ -1267,7 +1286,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229
 msgid "Django Documentation"
-msgstr "توثيق جانغو"
+msgstr "توثيق دجانجو"
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
 msgid "Topics, references, &amp; how-to’s"
@@ -1287,7 +1306,7 @@ msgstr "مجتمع جانغو"
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
 msgid "Connect, get help, or contribute"
-msgstr "تواصل، واحصل على المساعدة، أو ساهم"
+msgstr "تواصل أو احصل على المساعدة أو ساهم"
 
 #: .\venv\Lib\site-packages\modeltranslation\widgets.py:32
 msgid "None"
