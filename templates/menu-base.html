@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth w-full h-full">
+<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth w-full h-full overflow-auto">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +24,8 @@
     <!-- set favicon -->
     <link rel="icon" href="{{ menu.logo.url }}" type="image/x-icon">
 </head>
-<body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-full h-full flex items-stretch justify-center">
-    <div class="max-w-md w-full {% block parent_classes %}{% endblock %}">
+<body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-full h-full flex items-stretch justify-center overflow-auto">
+    <div class="max-w-md w-full overflow-auto {% block parent_classes %}{% endblock %}">
         {% block content %}{% endblock %}
     </div>
 </body>
