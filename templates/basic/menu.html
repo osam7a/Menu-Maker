@@ -32,15 +32,13 @@
     <div class="swiper-pagination"></div>
 </div>
 <h1 class="mt-5 mb-2 text-3xl">{% translate 'Categories' %}</h1>
-<hr class="mb-3 opacity-50 w-2/5">
+<hr class="mb-1 opacity-50 w-2/5">
+<p class="mb-3 text-neutral-300">Our restaurant offers a variety of food categories, each thoughtfully curated to suit your tastes.</p>
 <div class="flex flex-col gap-1.5">
     {% for category in categories %}
-    <div class="grid grid-rows-1 grid-cols-7 bg-neutral-700 rounded rounded-md animate__animated {% if LANGUAGE_CODE != 'ar' %}animate__slideInLeft{% else %}animate__slideInRight{% endif %}" style="animation-delay: .{{ forloop.counter0|add:2 }}s;animation-duration: .4s;animation-timing-function: ease-in-out;">
-        {% if category.image %}<div class="col-span-2 w-full h-full rounded-l rounded-k-md" style="background-image: url('{{ category.image.url }}');background-size: cover;background-repeat: no-repeat;background-position: center;"></div>{% endif %}
-        <div class="{% if category.image %}col-span-5{% else %}col-span-7{% endif %} p-5 px-3 flex flex-row items-center">
-            <h1 class="text-2xl pb-1">{{ category.title }}</h1>
-            <svg class="ms-auto w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"{% if LANGUAGE_CODE == 'ar' %} style="transform: scaleX(-1);"{% endif %}><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
-        </div>
+    <div class="grid grid-rows-1 grid-cols-7 items-center bg-neutral-700 hover:bg-neutral-600 rounded rounded-md cursor-pointer animate__animated {% if LANGUAGE_CODE != 'ar' %}animate__slideInLeft{% else %}animate__slideInRight{% endif %}" style="animation-delay: .{{ forloop.counter0|add:2 }}s;animation-duration: .4s;animation-timing-function: ease-in-out;">
+        <h1 class="{% if category.image %}col-span-5{% else %}col-span-7{% endif %} my-auto p-5 px-3 text-2xl">{{ category.title }} ({{ category.items.all|length }})</h1>
+        {% if category.image %}<div class="col-span-2 min-h-20 w-full h-full rounded-l rounded-l-md" style="background-image: url('{{ category.image.url }}');background-size: cover;background-repeat: no-repeat;background-position: center;"></div>{% endif %}
     </div>
     {% endfor %}
 </div>
