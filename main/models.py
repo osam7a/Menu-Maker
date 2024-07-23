@@ -43,7 +43,7 @@ class Category(models.Model):
 
 class Item(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
 
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)
