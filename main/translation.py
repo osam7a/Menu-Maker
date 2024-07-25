@@ -4,7 +4,7 @@ from main.models import Item, Category, Menu
 
 @register(Item)
 class ItemTranslationOptions(TranslationOptions):
-    fields = ('title', 'ingredients', 'featured_label')
+    fields = ('title', 'ingredients')
 
 @register(Category)
 class CategoryTranslationOptions(TranslationOptions):
