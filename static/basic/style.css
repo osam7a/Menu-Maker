@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  font-family: "Para", sans-serif;
+  background: white;
+}
+div::-webkit-scrollbar {
+  display: none;
+}
+.active {
+  background-color: #242329 !important;
+  color: white !important;
+  font-weight: 400;
+}
+
+.scrollable-nav {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.scrollable-nav::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
