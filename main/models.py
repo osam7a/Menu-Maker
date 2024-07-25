@@ -19,6 +19,8 @@ class Menu(models.Model):
 
     currency = models.CharField(max_length=10, default='EUR')
     template = models.CharField(max_length=100, default='basic')
+    thumbnail = models.ImageField(upload_to='static/uploads/')
+
     languages_allowed = models.ManyToManyField('Language')
 
     def __str__(self):
@@ -47,12 +49,9 @@ class Item(models.Model):
 
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    compare_at_price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     ingredients = models.TextField(blank=True)
     image = models.ImageField(upload_to='static/uploads/')
-
-    featured = models.BooleanField(default=False)
-    featured_label = models.CharField(max_length=100, blank=True)
-    featured_label_color = models.CharField(max_length=100, blank=True, choices=LABEL_COLORS, default='red')
 
     def __str__(self):
         return self.title + " | " + self.title_ar
