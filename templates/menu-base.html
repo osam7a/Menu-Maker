@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth w-full h-full overflow-auto">
+<html lang="{{ LANGUAGE_CODE }}" class="scroll-smooth w-full h-full ">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +13,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Splide Slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
     <!-- Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- set favicon -->
     <link rel="icon" href="{{ menu.logo.url }}" type="image/x-icon">
+
+    {% block head %}{% endblock %} 
 </head>
-<body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-full h-full flex items-stretch justify-center overflow-auto">
-    <div class="max-w-md w-full overflow-auto {% block parent_classes %}{% endblock %}">
+<body{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %} class="w-full h-full flex items-stretch justify-center ">
+    <div id="main-container" class="max-w-md w-full  {% block parent_classes %}{% endblock %}">
         {% block content %}{% endblock %}
     </div>
+    
 </body>
 </html>
