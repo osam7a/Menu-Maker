@@ -24,7 +24,7 @@ class Menu(models.Model):
     languages_allowed = models.ManyToManyField('Language', help_text=_("The languages allowed for the menu."))
 
     def __str__(self):
-        return self.title_en + " | " + self.title_ar
+        return self.title
     
     class Meta:
         verbose_name = "Menu"
@@ -37,7 +37,7 @@ class Category(models.Model):
     image = models.ImageField(blank=True, upload_to='static/uploads/', help_text=_("The image of the category."))
 
     def __str__(self):
-        return self.title + " | " + self.title_ar
+        return self.title
     
     class Meta:
         verbose_name = "Category"
@@ -58,7 +58,7 @@ class Item(models.Model):
     combo = models.BooleanField(default=False, help_text=_("Does the item come with a side & drink?"))
 
     def __str__(self):
-        return self.title + " | " + self.title_ar
+        return self.title
     
     class Meta:
         verbose_name = "Item"
