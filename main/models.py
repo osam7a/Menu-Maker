@@ -24,7 +24,7 @@ class Menu(models.Model):
     languages_allowed = models.ManyToManyField('Language', help_text=_("The languages allowed for the menu."))
 
     def __str__(self):
-        return self.title
+        return "#" + str(self.id) + " " + self.title
     
     class Meta:
         verbose_name = "Menu"
@@ -32,12 +32,10 @@ class Menu(models.Model):
 
 class Category(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, help_text=_("The menu that the category belongs to."))
-
     title = models.CharField(max_length=100, help_text=_("The title of the category."))
-    image = models.ImageField(blank=True, upload_to='static/uploads/', help_text=_("The image of the category."))
 
     def __str__(self):
-        return self.title
+        return "#" + str(self.id) + " " + self.title
     
     class Meta:
         verbose_name = "Category"
@@ -58,7 +56,7 @@ class Item(models.Model):
     combo = models.BooleanField(default=False, help_text=_("Does the item come with a side & drink?"))
 
     def __str__(self):
-        return self.title
+        return "#" + str(self.id) + " " + self.title
     
     class Meta:
         verbose_name = "Item"
@@ -70,7 +68,7 @@ class Language(models.Model):
     rtl = models.BooleanField(default=False, help_text=_("Whether the language is right-to-left."))
 
     def __str__(self):
-        return self.name
+        return "#" + str(self.id) + " " + self.name
 
     class Meta:
         verbose_name = "Language"
