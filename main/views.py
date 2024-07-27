@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.templatetags.static import static
 
 from .models import Menu, Category, Item
 
@@ -7,12 +6,11 @@ from .models import Menu, Category, Item
 def menu(request, menu_id):
     menu = get_object_or_404(Menu, pk=menu_id)
     categories = Category.objects.filter(menu=menu)
-    items = Item.objects.filter(menu=menu)
+    # sort category items by compare_at_price
 
     context = {
         'menu': menu,
-        'categories': categories,
-        'items': items,
+        'categories': categories
     }
 
     if not request.GET.get('selected'):
