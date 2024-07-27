@@ -85,7 +85,7 @@
         {% for category in categories %}
         <section id="category-{{ category.id }}" class="section p-5 pt-7">
           <span class="text-3xl text-[#DCBF71] font-light">{{ category.title }}</span>
-          {% for item in category.items.all %}
+            {% for item in category.items.all %}
           <div class="flex flex-col gap-1 mt-3">
             <!-- CARD #1 -->
             <div class="flex items-stretch bg-[#3C393E] rounded-md">
