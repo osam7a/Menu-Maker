@@ -13,15 +13,7 @@ class ItemResource(resources.ModelResource):
         model = Item
 
     def before_import_row(self, row, **kwargs):
-        image_url = row.get('image_url')
-        if image_url:
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                file_name = image_url.split('/')[-1]
-                file_content = response.content
-                file = File(file_content, name=file_name)
-                row['image'] = file
-        # Exclude the 'id' field from import
+        row.pop('image', None)
         row.pop('id', None)
 
 class CategoryResource(resources.ModelResource):
@@ -29,14 +21,6 @@ class CategoryResource(resources.ModelResource):
         model = Category
 
     def before_import_row(self, row, **kwargs):
-        image_url = row.get('image_url')
-        if image_url:
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                file_name = image_url.split('/')[-1]
-                file_content = response.content
-                file = File(file_content, name=file_name)
-                row['image'] = file
         # Exclude the 'id' field from import
         row.pop('id', None)
 
