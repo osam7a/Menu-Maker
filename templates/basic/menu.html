@@ -50,7 +50,7 @@
       <div class="bg-[#272429]">
         {% for category in categories %}
         <section id="category-{{ category.id }}" class="section p-5 pt-7">
-          <span class="text-3xl text-[#DCBF71] font-light">{{ category.title }}</span>
+          <span class="text-2xl text-[#DCBF71] font-light">{{ category.title }}</span>
             {% for item in category.items.all %}
           <div class="flex flex-col gap-1 mt-3">
             <!-- CARD #1 -->
