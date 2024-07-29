@@ -4,114 +4,117 @@
 
 {% block head %}
 <script src="{% static 'basic/scrollspy.js' %}" type="text/javascript"></script>
+<script src="{% static 'basic/script.js' %}"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pera:wght@800&display=swap" />
 <link rel="stylesheet" href="{% static 'basic/style.css' %}">
 {% endblock %}
 
-{% block parent_classes%}bg-[#272429]{% endblock %}
+{% block parent_classes%}bg-[#272429] relative{% endblock %}
 {% block content %}
-  <div class="">
-    <div class="z-0">
-      <img
-        src={{ menu.thumbnail|default:"https://ucarecdn.com/b3557336-deb8-4665-add1-99afa374a6bd/71782.jpg" }}
-        alt="Food"
-        class="w-full h-[320px] object-cover z-0"
-      />
-    </div>
-    <div class="relative -mt-5">
-      <div class="sticky top-0 z-10 sticky-nav">
-        <div id="search-bar-container" class="p-4 rounded-t-2xl -mt-5 z-30 flex items-center bg-[#272429]" >
-          <div class="relative flex items-center w-full">
-            <input type="text" placeholder="{% translate 'Search' %}" class="bg-[#3C393E] bg-opacity-50 text-white ps-5 text-[16px] py-3 rounded-3xl w-full" />
-            <div class="absolute end-5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DCBF71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" > <circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /> </svg>
-            </div>
-          </div>
-          <button class="bg-[#3C393E] bg-opacity-50 p-3 rounded-full ms-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DCBF71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal" > <line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /> </svg>
-          </button>
-        </div>
-        <div>
-          <div class="bg-[#DCBF72] overflow-x-scroll flex items-center gap-3 p-1.5" id="sticky-nav" >
-            {% for category in categories %}
-            {% if forloop.first %}
-            <a href="#category-{{ category.id }}-link" class="active px-4 py-[5px] bg-transparent text-[#282329] rounded-full ms-5 whitespace-nowrap active font-semibold" >
-              {{ category.title }}
-            </a>
-            {% else %}
-            <a href="#category-{{ category.id }}-link" class="px-4 py-[5px] bg-transparent text-[#201C0B] rounded-full font-semibold btn" >
-              {{ category.title }}
-            </a>
-            {% endif %}
-            {% endfor %}
-          </div>
+{% include 'basic/menu-info.html' %}
+<div class="p-3 bg-[#272429] flex flex-row">
+  <img src="{{ menu.logo.url }}" class="h-12">
+  <div id="menu-button" class="ms-auto w-10 h-10">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</div>
+<div class="z-0">
+  <img
+    src={{ menu.thumbnail|default:"https://ucarecdn.com/b3557336-deb8-4665-add1-99afa374a6bd/71782.jpg" }}
+    alt="Food"
+    class="w-full h-[320px] object-cover z-0"
+  />
+</div>
+<div class="relative -mt-5">
+  <div class="sticky top-0 z-10 sticky-nav">
+    <div id="search-bar-container" class="p-4 rounded-t-2xl -mt-5 z-30 flex items-center bg-[#272429]" >
+      <div class="relative flex items-center w-full">
+        <input id="searchbar" type="text" placeholder="{% translate 'Search' %}" class="bg-[#3C393E] bg-opacity-50 text-white ps-5 text-[16px] py-3 rounded-3xl w-full" />
+        <div class="absolute end-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DCBF71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" > <circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /> </svg>
         </div>
       </div>
-      <div class="bg-[#272429]">
+    </div>
+    <div>
+      <div class="bg-[#DCBF72] overflow-x-scroll flex items-center gap-3 p-1.5" id="sticky-nav" >
         {% for category in categories %}
-        <section id="category-{{ category.id }}" class="section p-5 pt-7">
-          <span class="text-2xl text-[#DCBF71] font-light">{{ category.title }}</span>
-            {% for item in category.items.all %}
-          <div class="flex flex-col gap-1 mt-3">
-            <!-- CARD #1 -->
-            <div class="flex items-stretch bg-[#3C393E] rounded-md">
-              {% if item.image %}
-              <div class="w-[28%] rounded-l-md">
-                <img
-                  src="{{ item.image.url }}"
-                  alt="{{ item.title }}"
-                  class="w-full h-full object-cover rounded-l-md"
-                />
-              </div>
-              {% endif %}
-              <div class="p-3 {% if item.image %}ms-2 w-[75%]{% else %}w-full{% endif %} relative">
-                <h3 class="text-lg text-[#ECE9ED] font-pera">
-                  {{ item.title }}
-                </h3>
-                {% if item.compare_at_price %}
-                <span class="absolute -top-1 -end-3 text-white text-sm bg-red-500 rounded-lg px-2 py-1">{% translate 'Sale' %}</span>
-                {% endif %}
-                <p class="text-[#A7A4A9]">{{ item.ingredients }}.</p>
-                <div class="flex items-center justify-between mt-3">
-                  <div class="flex gap-1">
-                    {% if item.combo %}
-                    <div class="p-1 bg-[#272429] rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M533-440q-32-45-84.5-62.5T340-520q-56 0-108.5 17.5T147-440h386ZM40-360q0-109 91-174.5T340-600q118 0 209 65.5T640-360H40Zm0 160v-80h600v80H40ZM720-40v-80h56l56-560H450l-10-80h200v-160h80v160h200L854-98q-3 25-22 41.5T788-40h-68Zm0-80h56-56ZM80-40q-17 0-28.5-11.5T40-80v-40h600v40q0 17-11.5 28.5T600-40H80Zm260-400Z"/></svg>
-                    </div>
-                    {% endif %}
-                    {% if item.group %}
-                    <div class="p-1 bg-[#272429] rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"/></svg>
-                    </div>
-                    {% else %}
-                    <div class="p-1 bg-[#272429] rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
-                    </div>
-                    {% endif %}
-                    {% if item.vegan %}
-                    <div class="p-1 bg-[#272429] rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M440-120v-319q-64 0-123-24.5T213-533q-45-45-69-104t-24-123v-80h80q63 0 122 24.5T426-746q31 31 51.5 68t31.5 79q5-7 11-13.5t13-13.5q45-45 104-69.5T760-720h80v80q0 64-24.5 123T746-413q-45 45-103.5 69T520-320v200h-80Zm0-400q0-48-18.5-91.5T369-689q-34-34-77.5-52.5T200-760q0 48 18 92t52 78q34 34 78 52t92 18Zm80 120q48 0 91.5-18t77.5-52q34-34 52.5-78t18.5-92q-48 0-92 18.5T590-569q-34 34-52 77.5T520-400Zm0 0Zm-80-120Z"/></svg>
-                    </div>
-                    {% endif %}
-                  </div>
-                  {% if item.compare_at_price %}
-                  <span class="text-[#A7A4A9] ms-auto self-end line-through text-sm me-1"><span class="text-xs">{{menu.currency}}</span>{{ item.compare_at_price }}</span>
-                  <span class="text-xl text-[#DCBF71] font-semibold"><span class="text-sm">{{menu.currency}}</span>{{ item.price }}</span>
-                  {% else %}
-                  <span class="text-xl text-[#DCBF71] font-semibold"><span class="text-sm">{{menu.currency}}</span>{{ item.price }}</span>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-            <!-- CARD #2 -->
-          </div>
-          {% endfor %}
-          {% if not category.items.all %}
-          <div class="text-lg mt-1 text-[#A7A4A9]">{% translate 'Coming soon!' %}</div>
-          {% endif %}
-        </section>
+        {% if forloop.first %}
+        <a href="#category-{{ category.id }}-link" class="active px-4 py-[5px] bg-transparent text-[#282329] rounded-full ms-5 whitespace-nowrap active font-semibold" >
+          {{ category.title }}
+        </a>
+        {% else %}
+        <a href="#category-{{ category.id }}-link" class="px-4 py-[5px] bg-transparent text-[#201C0B] rounded-full font-semibold btn" >
+          {{ category.title }}
+        </a>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
   </div>
+  <div class="bg-[#272429]">
+    {% for category in categories %}
+    <section id="category-{{ category.id }}" class="section p-5 pt-7">
+      <span class="text-2xl text-[#DCBF71] font-light">{{ category.title }}</span>
+      {% for item in category.items.all %}
+      <div id="item-{{ item.id }}" class="flex flex-col gap-1 mt-3">
+        <!-- CARD #1 -->
+        <div class="flex items-stretch bg-[#3C393E] rounded-md">
+          {% if item.image %}
+          <div class="w-[28%] rounded-l-md">
+            <img
+              src="{{ item.image.url }}"
+              alt="{{ item.title }}"
+              class="w-full h-full object-cover rounded-l-md"
+            />
+          </div>
+          {% endif %}
+          <div class="p-3 {% if item.image %}ms-2 w-[75%]{% else %}w-full{% endif %} relative">
+            <h3 class="text-lg text-[#ECE9ED] font-pera">
+              {{ item.title }}
+            </h3>
+            {% if item.compare_at_price %}
+            <span class="absolute -top-1 -end-3 text-white text-sm bg-red-500 rounded-lg px-2 py-1">{% translate 'Sale' %}</span>
+            {% endif %}
+            <p class="text-[#A7A4A9]">{{ item.ingredients }}.</p>
+            <div class="flex items-center justify-between mt-3">
+              <div class="flex gap-1">
+                {% if item.combo %}
+                <div class="p-1 bg-[#272429] rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M533-440q-32-45-84.5-62.5T340-520q-56 0-108.5 17.5T147-440h386ZM40-360q0-109 91-174.5T340-600q118 0 209 65.5T640-360H40Zm0 160v-80h600v80H40ZM720-40v-80h56l56-560H450l-10-80h200v-160h80v160h200L854-98q-3 25-22 41.5T788-40h-68Zm0-80h56-56ZM80-40q-17 0-28.5-11.5T40-80v-40h600v40q0 17-11.5 28.5T600-40H80Zm260-400Z"/></svg>
+                </div>
+                {% endif %}
+                {% if item.group %}
+                <div class="p-1 bg-[#272429] rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"/></svg>
+                </div>
+                {% else %}
+                <div class="p-1 bg-[#272429] rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+                </div>
+                {% endif %}
+                {% if item.vegan %}
+                <div class="p-1 bg-[#272429] rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#DCBF71"><path d="M440-120v-319q-64 0-123-24.5T213-533q-45-45-69-104t-24-123v-80h80q63 0 122 24.5T426-746q31 31 51.5 68t31.5 79q5-7 11-13.5t13-13.5q45-45 104-69.5T760-720h80v80q0 64-24.5 123T746-413q-45 45-103.5 69T520-320v200h-80Zm0-400q0-48-18.5-91.5T369-689q-34-34-77.5-52.5T200-760q0 48 18 92t52 78q34 34 78 52t92 18Zm80 120q48 0 91.5-18t77.5-52q34-34 52.5-78t18.5-92q-48 0-92 18.5T590-569q-34 34-52 77.5T520-400Zm0 0Zm-80-120Z"/></svg>
+                </div>
+                {% endif %}
+              </div>
+              {% if item.compare_at_price %}
+              <span class="text-[#A7A4A9] ms-auto self-end line-through text-sm me-1"><span class="text-xs">{{menu.currency}}</span>{{ item.compare_at_price }}</span>
+              <span class="text-xl text-[#DCBF71] font-semibold"><span class="text-sm">{{menu.currency}}</span>{{ item.price }}</span>
+              {% else %}
+              <span class="text-xl text-[#DCBF71] font-semibold"><span class="text-sm">{{menu.currency}}</span>{{ item.price }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- CARD #2 -->
+      </div>
+      {% endfor %}
+      {% if not category.items.all %}
+      <div class="text-lg mt-1 text-[#A7A4A9]">{% translate 'Coming soon!' %}</div>
+      {% endif %}
+    </section>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
