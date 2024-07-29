@@ -42,11 +42,11 @@
       <div class="bg-[#DCBF72] overflow-x-scroll flex items-center gap-3 p-1.5" id="sticky-nav" >
         {% for category in categories %}
         {% if forloop.first %}
-        <a href="#category-{{ category.id }}-link" class="active px-4 py-[5px] bg-transparent text-[#282329] rounded-full ms-5 whitespace-nowrap active font-semibold" >
+        <a href="#category-{{ category.id }}" class="active px-4 py-[5px] bg-transparent text-[#282329] rounded-full ms-5 whitespace-nowrap active font-semibold" >
           {{ category.title }}
         </a>
         {% else %}
-        <a href="#category-{{ category.id }}-link" class="px-4 py-[5px] bg-transparent text-[#201C0B] rounded-full font-semibold btn" >
+        <a href="#category-{{ category.id }}" class="px-4 py-[5px] bg-transparent text-[#201C0B] rounded-full font-semibold btn" >
           {{ category.title }}
         </a>
         {% endif %}
