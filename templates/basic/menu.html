@@ -21,13 +21,35 @@
     <span></span><span></span><span></span><span></span>
   </div>
 </div>
-<div class="z-0">
-  <img
+
+<div class="swiper z-0">
+  <!-- <img
     src={{ menu.thumbnail|default:"https://ucarecdn.com/b3557336-deb8-4665-add1-99afa374a6bd/71782.jpg" }}
     alt="Food"
     class="w-full h-[320px] object-cover z-0"
-  />
+  /> -->
+  <div class="swiper-wrapper">
+    {% for thumbnail in thumbnails %}
+    <div class="swiper-slide">
+      <img src="{{ thumbnail.file.url }}" alt="Menu Thumbnail" class="w-full h-full">
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="swiper-pagination"></div>
 </div>
+<script>
+  const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+});
+</script>
+
 <div class="relative -mt-5">
   <div class="sticky top-0 z-10 sticky-nav">
     <div id="search-bar-container" class="p-4 rounded-t-2xl -mt-5 z-30 flex items-center bg-[#272429]" >

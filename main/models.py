@@ -15,7 +15,9 @@ for template in listdir("templates"):
     if path.isdir('templates/' + template):
         TEMPLATES.append((template, template))
 
-# Create your models here.
+class Thumbnail(models.Model):
+    file = models.ImageField(blank=True, upload_to='static/uploads/', help_text=_("The thumbnail image."))
+
 class Menu(models.Model):
     title = models.CharField(max_length=100, help_text=_("The title of the menu."))
     resturaunt_name = models.CharField(default="Resturaunt", max_length=100, help_text=_("The name of the restaurant."))
@@ -26,7 +28,7 @@ class Menu(models.Model):
 
     currency = models.CharField(max_length=10, default='EUR', help_text=_("The currency used for pricing."))
     template = models.CharField(max_length=100, default='basic', help_text=_("The template used for the menu."), choices=TEMPLATES)
-    thumbnail = models.ImageField(blank=True, upload_to='static/uploads/', help_text=_("The thumbnail image of the menu."))
+    thumbnails = models.ManyToManyField(Thumbnail, blank=True)
 
     languages_allowed = models.ManyToManyField('Language', help_text=_("The languages allowed for the menu."))
 

@@ -32,5 +32,6 @@ class CategoryAdmin(ImportExportModelAdmin, TranslationAdmin):
 
 # Register your models here.
 admin.site.register(Menu)
+admin.site.register(Thumbnail)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Item, ItemAdmin)

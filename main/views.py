@@ -6,11 +6,13 @@ from .models import Menu, Category, Item
 def menu(request, menu_id):
     menu = get_object_or_404(Menu, pk=menu_id)
     categories = Category.objects.filter(menu=menu)
+    thumbnails = menu.thumbnails
     # sort category items by compare_at_price
 
     context = {
         'menu': menu,
-        'categories': categories
+        'categories': categories,
+        'thumbnails': thumbnails.all()
     }
 
     if not request.GET.get('selected'):
