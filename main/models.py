@@ -11,9 +11,9 @@ LABEL_COLORS = [
 ]
 
 TEMPLATES = []
-for template in listdir("./templates"):
-    if path.isdir(template):
-        TEMPLATES.append(template)
+for template in listdir("templates"):
+    if path.isdir('templates/' + template):
+        TEMPLATES.append((template, template))
 
 # Create your models here.
 class Menu(models.Model):
@@ -56,7 +56,7 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, help_text=_("The price of the item."))
     compare_at_price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text=_("Do you want to do a sale? This will be the price before discount."))
     ingredients = models.TextField(blank=True, help_text=_("The ingredients of the item."))
-    image = models.ImageField(upload_to='static/uploads/', help_text=_("The image of the item."))
+    image = models.ImageField(blank=True, upload_to='static/uploads/', help_text=_("The image of the item."))
 
     group = models.BooleanField(default=False, help_text=_("Is this item suitable for more than 1 person?"))
     vegan = models.BooleanField(default=False, help_text=_("Can this item be eaten by vegeterians?"))
