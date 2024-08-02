@@ -32,6 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://menu-maker-ykjf.onrender.com/"]
 
 
 # Application definition
