@@ -6,12 +6,6 @@ link (or QR code) that customers can open on their phone. Menus support
 multiple languages, item images, pricing (with optional "sale" pricing),
 ingredients, and labels for combos, group-size, and vegan items.
 
-## Screenshots
-
-| Language selector | Menu page |
-| --- | --- |
-| ![Language selector](docs/screenshots/language-selector.png) | ![Menu page](docs/screenshots/menu-page.png) |
-
 ## Features
 
 - Manage menus, categories, and items through the Django admin
